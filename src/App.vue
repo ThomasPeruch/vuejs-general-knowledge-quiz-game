@@ -14,10 +14,14 @@
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  created() {
+    this.axios.get('https://opentdb.com/api.php?amount=1&category=21&difficulty=easy').then((response) => {
+      console.log(response.data)
+    })
+  }
 }
 
-// https://opentdb.com/api.php?amount=1&category=21&difficulty=easy
 </script>
 
 <style lang="scss">
