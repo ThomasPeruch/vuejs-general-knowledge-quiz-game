@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Pergunta ?</h1>
+    <h1>Question ?</h1>
     <input type="radio" name="options" value="True">
     <label>True</label><br>
 
