@@ -1,12 +1,6 @@
 <template>
   <div>
-    <h1>Question ?</h1>
-    <input type="radio" name="options" value="True">
-    <label>True</label><br>
-
-    <input type="radio" name="options" value="False">
-    <label>False</label><br>
-
+    <h1 v-html="this.question"></h1>
     <button class="send" type="button">Send</button>
   </div>
 </template>
@@ -15,9 +9,18 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      question: undefined,
+      incorrect_answers: [],
+      correct_answer: undefined
+    }
+  },
   created() {
     this.axios.get('https://opentdb.com/api.php?amount=1&category=21&difficulty=easy').then((response) => {
-      console.log(response.data)
+      this.question = response.data.results[0].question
+      this.incorrect_answers = response.data.results[0].incorrect_answers
+      this.correct_answer = response.data.results[0].correct_answer
     })
   }
 }
